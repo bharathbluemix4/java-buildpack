@@ -120,7 +120,10 @@ module JavaBuildpack
       # @return [Void]
       def download_tar(version, uri, target_directory = @droplet.sandbox, name = @component_name)
         puts "----------------------------"
-        puts "URI : #{uri.to_s}"
+        puts "URI : #{uri}"
+        puts "----------------------------"
+        puts "----------------------------"
+        puts "URI : #{uri.sanitize_uri}"
         puts "----------------------------"
         download(version, uri, name) do |file|
           with_timing "Expanding #{name} to #{target_directory.relative_path_from(@droplet.root)}" do
