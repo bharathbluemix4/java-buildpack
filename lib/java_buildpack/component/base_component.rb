@@ -119,12 +119,10 @@ module JavaBuildpack
       # @param [String] name an optional name for the download and expansion.  Defaults to +@component_name+.
       # @return [Void]
       def download_tar(version, uri, target_directory = @droplet.sandbox, name = @component_name)
-        puts "----------------------------"
-        puts "URI : #{uri}"
-        puts "----------------------------"
-        puts "----------------------------"
-        puts "URI : #{uri.sanitize_uri}"
-        puts "----------------------------"
+        if uri.ends_with('.tar.gz')
+          puts "Got"
+          puts "----------------------------------"
+        end
         download(version, uri, name) do |file|
           with_timing "Expanding #{name} to #{target_directory.relative_path_from(@droplet.root)}" do
             FileUtils.mkdir_p target_directory
